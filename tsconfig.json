@@ -1,0 +1,18 @@
+{
+    "files" : [
+        "./main.ts",
+        "./healthcheck.ts",
+        "./world_server_rpcs.ts"
+    ],
+    "compilerOptions": {
+        "target": "es5",
+        "typeRoots": [
+            "./node_modules"
+        ],
+        "outFile": "./build/index.js",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true
+    }
+}
