@@ -2,7 +2,7 @@
     "files" : [
         "./main.ts",
         "./healthcheck.ts",
-        "./world_server_rpcs.ts"
+        "./itemdatabase_rpcs.ts"
     ],
     "compilerOptions": {
         "target": "es5",
