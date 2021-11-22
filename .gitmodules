@@ -1,0 +1,3 @@
+[submodule "database_generator/common"]
+	path = database_generator/common
+	url = https://github.com/RickWillcox/Ender-Woods-Common.git

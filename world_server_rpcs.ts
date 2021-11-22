@@ -2,7 +2,7 @@
 var null_uuid : string = "00000000-0000-0000-0000-000000000000"
 
 
-function _getItems(nk : nkruntime.Nakama) : {[key : string] : any} {
+function _getItems(nk : nkruntime.Nakama) : [{[key : string] : any}, string] {
     var keys : nkruntime.StorageReadRequest[] = [
         {
             collection: "item_database",
@@ -12,22 +12,28 @@ function _getItems(nk : nkruntime.Nakama) : {[key : string] : any} {
     ];
 
     var result : nkruntime.StorageObject[] = nk.storageRead(keys)
-    var items : {[key : string] : any} = result[0].value
+    
+    if (result.length == 0)
+    {
+        return [{}, "*"]
+    }
 
-    return items
+    var items : {[key : string] : any} = result[0].value
+    var version : string = result[0].version
+
+    return [items, version]
 }
 
-function _saveItems(nk : nkruntime.Nakama, items : {[key : string] : any}) : void {
+function _saveItems(nk : nkruntime.Nakama, items : {[key : string] : any}, version : string) : void {
     var keys : nkruntime.StorageWriteRequest[] = [
         {
             collection: "item_database",
             key : "items",
             userId : null_uuid,
-            value : items
+            value : items,
+            version : version
         }
     ];
-
-
     nk.storageWrite(keys)
 }
 
@@ -52,7 +58,10 @@ type Item = {
 
 
 function addItem(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string) : string {
-    var items : { [key: string]: any } = _getItems(nk)
+    var item_data = _getItems(nk)
+    logger.info(item_data.toString())
+    var items : { [key: string]: any } = item_data[0]
+    var version : string = item_data[1]
     logger.info(payload)
     var item : Item = JSON.parse(payload);
     try
@@ -66,7 +75,7 @@ function addItem(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime
                 stack_size: item.stack_size,
                 base_modfiers: item.base_modifiers
             };
-            _saveItems(nk, items)
+            _saveItems(nk, items, version)
             return JSON.stringify({success : true})
         }
     }
@@ -75,11 +84,13 @@ function addItem(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime
         return JSON.stringify({success : false, error: (<Error>e).message})
     }
 
-    return JSON.stringify({success : false})
+    return JSON.stringify({success : false, error: "item exists ".concat(JSON.stringify(items[item_id]))})
 }
 
 function removeAllItems(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string) : string {
+    var items_data = _getItems(nk)
+    var version = items_data[1]
     var items : { [key: string] : any } = {}
-    _saveItems(nk, items)
+    _saveItems(nk, items, version)
     return JSON.stringify({success : true})
 }
