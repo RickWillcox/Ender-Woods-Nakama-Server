@@ -41,6 +41,7 @@ func _ready():
 	print(session)
 	
 	test_server_connection()
+	test_item_rpcs()
 
 
 func test_server_connection():
@@ -141,3 +142,57 @@ func test_server_connection():
 	# Since there will be more than one world server and one nakama auth, world
 	# the inventory data should be stored under user with null uuid (basically meaning us)
 	
+	
+func test_item_rpcs():
+	# test a normal http request from here
+	var request : HTTPRequest = HTTPRequest.new()
+	add_child(request)
+	request.connect("request_completed", self, "_http_request_completed")
+	var error = request.request("https://httpbin.org/get")
+	if error != OK:
+		push_error("An error occurred in the HTTP request.")
+	yield(self, "http_ok")
+	request.queue_free()
+	
+	# test item get rpc
+	request = HTTPRequest.new()
+	add_child(request)
+	request.connect("request_completed", self, "_http_request_completed")
+	error = request.request("http://127.0.0.1:7350/v2/rpc/get_items?http_key=defaulthttpkey")
+	if error != OK:
+		push_error("An error occurred in the HTTP request.")
+	yield(self, "http_ok")
+	print("ITEMS DATABASE PRINTED")
+	print(http_response)
+	assert(JSON.parse(http_response["payload"]).result["success"] == true)
+	request.queue_free()
+	
+	# test adding items
+	var body = {
+		"item_id": 3003323231,
+		"stack_size" : 20,
+	}
+	print(JSON.print(body))
+	print(JSON.print(JSON.print(body)))
+	request = HTTPRequest.new()
+	add_child(request)
+	request.connect("request_completed", self, "_http_request_completed")
+	error = request.request(
+		"http://127.0.0.1:7350/v2/rpc/add_item?http_key=defaulthttpkey",
+		[],
+		true, HTTPClient.METHOD_POST, JSON.print(JSON.print(body)))
+	if error != OK:
+		push_error("An error occurred in the HTTP request.")
+	yield(self, "http_ok")
+	print("ITEMS DATABASE UPDATED?")
+	print(http_response)
+	assert(JSON.parse(http_response["payload"]).result["success"] == true)
+	request.queue_free()
+
+signal http_ok
+var http_response
+# Called when the HTTP request is completed.
+func _http_request_completed(result, response_code, headers, body):
+	var response = parse_json(body.get_string_from_utf8())
+	http_response = response
+	emit_signal("http_ok")
