@@ -2,46 +2,84 @@
 var null_uuid : string = "00000000-0000-0000-0000-000000000000"
 
 
-function getWorldServerIds(nk : nkruntime.Nakama) : string[] {
+function _getItems(nk : nkruntime.Nakama) : {[key : string] : any} {
     var keys : nkruntime.StorageReadRequest[] = [
         {
-            collection: "world_servers",
-            key : "world_server_ids",
+            collection: "item_database",
+            key : "items",
             userId : null_uuid
         }
     ];
 
-    var world_server_ids : string[] = []
     var result : nkruntime.StorageObject[] = nk.storageRead(keys)
+    var items : {[key : string] : any} = result[0].value
 
-    result.forEach(res => {world_server_ids = res.value["world_server_ids"]})
-
-    return world_server_ids
+    return items
 }
 
-function saveWorldServerIds(nk : nkruntime.Nakama, world_server_ids : string[]) : void {
+function _saveItems(nk : nkruntime.Nakama, items : {[key : string] : any}) : void {
     var keys : nkruntime.StorageWriteRequest[] = [
         {
-            collection: "world_servers",
-            key : "world_server_ids",
+            collection: "item_database",
+            key : "items",
             userId : null_uuid,
-            value : {"world_server_ids" : world_server_ids}
+            value : items
         }
     ];
+
 
     nk.storageWrite(keys)
 }
 
-function addWorldServerId(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string): string {
-    var world_server_id : string = JSON.parse(payload).world_server_id
-    var world_server_ids : string[] = getWorldServerIds(nk);
-
-    if (world_server_ids.indexOf(world_server_id) == -1)
+function getItems(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string) : string {
+    /*if (ctx.userId)
     {
-        world_server_ids.push(world_server_id)
-        saveWorldServerIds(nk, world_server_ids);
-        return JSON.stringify({success: true})
+        return JSON.stringify({success: false})
+    }*/
+    var items : {} = _getItems(nk);
+
+    return JSON.stringify({success: true, items: items})
+}
+
+
+type Item = {
+    item_id : Number;
+    item_name : string;
+    item_category : Number;
+    stack_size : Number;
+    base_modifiers : string;
+};
+
+
+function addItem(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string) : string {
+    var items : { [key: string]: any } = _getItems(nk)
+    logger.info(payload)
+    var item : Item = JSON.parse(payload);
+    try
+    {
+        var item_id : string = item.item_id.toString()
+        if (items[item_id] == undefined)
+        {
+            items[item_id] = {
+                item_name : item.item_name,
+                item_category: item.item_category,
+                stack_size: item.stack_size,
+                base_modfiers: item.base_modifiers
+            };
+            _saveItems(nk, items)
+            return JSON.stringify({success : true})
+        }
     }
-    
-    return JSON.stringify({success: false})
+    catch (e)
+    {
+        return JSON.stringify({success : false, error: (<Error>e).message})
+    }
+
+    return JSON.stringify({success : false})
+}
+
+function removeAllItems(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string) : string {
+    var items : { [key: string] : any } = {}
+    _saveItems(nk, items)
+    return JSON.stringify({success : true})
 }
