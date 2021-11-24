@@ -5,6 +5,8 @@ enum WritePermissions { NO_WRITE, OWNER_WRITE}
 onready var client : NakamaClient = AuthConnection.client
 var server_id = "WorldServer1"
 var username = ""
+
+var token = ""
 func _ready():
 	var email = "hello@example.com"
 	var password = "somesupersecretpassword"
@@ -14,6 +16,7 @@ func _ready():
 	print(session.token) # Print the session or exception
 	print(session.username)
 	username = session.username
+	token = session.token
 	print(session.user_id)
 	var save_game = "{ \"progress\": 50 }"
 	var my_stats = "{ \"skill\": 24 }"
@@ -42,6 +45,7 @@ func _ready():
 	
 	test_server_connection()
 	test_item_rpcs()
+	test_auth_rpcs()
 
 
 func test_server_connection():
@@ -167,24 +171,19 @@ func test_item_rpcs():
 	assert(JSON.parse(http_response["payload"]).result["success"] == true)
 	request.queue_free()
 	
-	# test adding items
-	var body = {
-		"item_id": 3003323231,
-		"stack_size" : 20,
-	}
-	print(JSON.print(body))
-	print(JSON.print(JSON.print(body)))
-	request = HTTPRequest.new()
+	
+func test_auth_rpcs():
+	var request = HTTPRequest.new()
 	add_child(request)
+	
+	var header = "Bearer %s" % token
 	request.connect("request_completed", self, "_http_request_completed")
-	error = request.request(
-		"http://127.0.0.1:7350/v2/rpc/add_item?http_key=defaulthttpkey",
-		[],
-		true, HTTPClient.METHOD_POST, JSON.print(JSON.print(body)))
+	var error = request.request(
+		"http://127.0.0.1:7350/v2/rpc/check_auth",
+		["Authorization: Bearer " + token])
 	if error != OK:
 		push_error("An error occurred in the HTTP request.")
 	yield(self, "http_ok")
-	print("ITEMS DATABASE UPDATED?")
 	print(http_response)
 	assert(JSON.parse(http_response["payload"]).result["success"] == true)
 	request.queue_free()
