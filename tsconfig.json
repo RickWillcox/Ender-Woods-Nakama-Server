@@ -1,8 +1,10 @@
 {
     "files" : [
         "./main.ts",
+        "./common.ts",
         "./healthcheck.ts",
-        "./itemdatabase_rpcs.ts"
+        "./itemdatabase_rpcs.ts",
+        "./inventory_rpcs.ts"
     ],
     "compilerOptions": {
         "target": "es5",

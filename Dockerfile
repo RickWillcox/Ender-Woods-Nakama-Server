@@ -9,6 +9,8 @@ COPY tsconfig.json .
 COPY main.ts .
 COPY healthcheck.ts .
 COPY itemdatabase_rpcs.ts .
+COPY inventory_rpcs.ts .
+COPY common.ts .
 RUN npx tsc
 
 FROM heroiclabs/nakama:3.4.0
