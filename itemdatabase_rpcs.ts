@@ -1,26 +1,26 @@
-function _getItems(nk : nkruntime.Nakama) : {[key : string] : any} {
-    return _getCollection(nk, "item_database", "items")
-}
-
-function _getRecipes(nk : nkruntime.Nakama) : {[key : string] : any} {
-    return _getCollection(nk, "item_database", "recipes")
-}
-
-function _getModifiers(nk : nkruntime.Nakama) : {[key : string] : any} {
-    return _getCollection(nk, "item_database", "modifiers")
-}
-
 function getItems(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string) : string {
-    var items : {} = _getItems(nk);
+    var items : {} = _getCollection(nk, "item_database", "items")
+    if (Object.keys(items).length == 0)
+    {
+        return JSON.stringify({success : false, message: "Item database not initialized"})
+    }
     return JSON.stringify({success: true, result: items})
 }
 
 function getRecipes(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string) : string {
-    var items : {} = _getRecipes(nk);
+    var items : {} = _getCollection(nk, "item_database", "recipes")
+    if (Object.keys(items).length == 0)
+    {
+        return JSON.stringify({success : false, message: "Item database not initialized"})
+    }
     return JSON.stringify({success: true, result: items})
 }
 
 function getModifiers(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string) : string {
-    var items : {} = _getModifiers(nk);
+    var items : {} = _getCollection(nk, "item_database", "modifiers")
+    if (Object.keys(items).length == 0)
+    {
+        return JSON.stringify({success : false, message: "Item database not initialized"})
+    }
     return JSON.stringify({success: true, result: items})
 }
