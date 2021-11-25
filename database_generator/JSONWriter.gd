@@ -5,7 +5,7 @@ var dict = {}
 func clear():
 	dict = {}
 
-func add_item(item_id : int, item_name: String, item_category : int, stack_size : int, base_modifiers: String):
+func add_item(item_id : int, item_name: String, item_category : int, stack_size : int, base_modifiers: Dictionary):
 	dict[item_id] = {
 		"item_name" : item_name,
 		"item_category" : item_category,
@@ -13,7 +13,7 @@ func add_item(item_id : int, item_name: String, item_category : int, stack_size 
 		"base_modifiers" : base_modifiers
 	}
 	
-func add_recipe(id : int, type : int, required_level : int, materials : String, result_item_id : int):
+func add_recipe(id : int, type : int, required_level : int, materials : Dictionary, result_item_id : int):
 	dict[id] = {
 		"type" : type,
 		"required_level" : required_level,
@@ -21,7 +21,7 @@ func add_recipe(id : int, type : int, required_level : int, materials : String, 
 		"result_item_id" : result_item_id
 	}
 	
-func add_modifier(id : int, type : int,  modifiers : String, display : String, item_category_restrictions : int):
+func add_modifier(id : int, type : int,  modifiers : Dictionary, display : String, item_category_restrictions : int):
 	dict[id] = {
 		"type" : type,
 		"modifiers" : modifiers,

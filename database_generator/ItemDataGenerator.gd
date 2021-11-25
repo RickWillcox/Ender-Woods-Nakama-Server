@@ -17,12 +17,12 @@ class Item:
 	var file_name : String
 	var item_category : int
 	var stack_size : int
-	var base_modifiers : String
+	var base_modifiers : Dictionary
 	func _init(_id, _item_name, _item_category, _base_modifiers, _stack_size = 1, _consumable = NON_CONSUMABLE):
 		id = _id
 		item_name = _item_name
 		consumable = _consumable
-		base_modifiers = JSON.print(_base_modifiers)
+		base_modifiers = _base_modifiers
 		item_category = _item_category
 		stack_size = _stack_size
 		file_name = str(id) + "_" + _item_name + ".png"
@@ -39,13 +39,13 @@ class Recipe:
 	var id : int
 	var type : int
 	var required_level : int
-	var materials : String
+	var materials : Dictionary
 	var result_item_id : int
 	func _init(_id : int, _type : int, _required_level : int, _materials : Dictionary, _result_item_id : int):
 		id = _id
 		type = _type
 		required_level = required_level
-		materials = JSON.print(_materials)
+		materials = _materials
 		result_item_id = _result_item_id
 	static func new_smelting(_id : int, _required_level : int, _materials : Dictionary, _result_item_id : int):
 		return Recipe.new(_id, ItemDatabase.RecipeType.SMELTING, _required_level, _materials, _result_item_id)
@@ -57,14 +57,14 @@ enum ModifierType { PREFIX = 0, SUFFIX = 1}
 class ItemModifier:
 	var id : int
 	var type : int
-	var modifiers : String
+	var modifiers : Dictionary
 	var display : String
 	var item_category_restrictions : int
 	func _init(_id : int, _item_category_restrictions, _display : String, _type : int, _modifiers : Dictionary):
 		id = _id
 		type = _type
 		display = _display
-		modifiers = JSON.print(_modifiers)
+		modifiers = _modifiers
 		item_category_restrictions = _item_category_restrictions
 	func save(json_writer : JSONWriter):
 		json_writer.add_modifier(id, type, modifiers, display, item_category_restrictions)
