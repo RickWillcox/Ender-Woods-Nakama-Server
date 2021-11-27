@@ -108,3 +108,9 @@ scp file_name root@45.58.43.202:/home/godot
 
 eg: scp world.pck root@45.58.43.202:/home/godot
 ```
+
+## Setting up npm / node 
+```
+sudo apt install nodejs npm 
+```
+
