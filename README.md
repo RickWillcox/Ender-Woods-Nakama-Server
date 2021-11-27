@@ -4,7 +4,7 @@ This is a reimplementation of the Auth server using nakama
 # Install latest verion of docker compose
 Linux - ```sudo curl -L "https://github.com/docker/compose/releases/download/`curl -fsSLI -o /dev/null -w %{url_effective} https://github.com/docker/compose/releases/latest | sed 's#.*tag/##g' && echo`/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose```
 
-Windows - 
+## Windows - 
 
 # How to start server
 `docker compose up`
@@ -20,3 +20,7 @@ Windows -
 # Troubleshooting
 ## 1. My changes are not updated, new rpcs arent visible
 Most likely typescript didn't compile correctly
+
+## Linux 
+
+Same as above except use `docker-compose` instead of `docker compose`
