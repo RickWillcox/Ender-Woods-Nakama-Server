@@ -84,10 +84,27 @@ docker-ce | 5:18.09.1~3-0~ubuntu-xenial | https://download.docker.com/linux/ubun
 ```
 sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io
 
-EG: sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=5:18.09.1~3-0~ubuntu-xenial containerd.io
+eg: sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=5:18.09.1~3-0~ubuntu-xenial containerd.io
 ```
 
 #### Check Version
 ```
 sudo docker -version
+```
+
+## To log in to the testing dedicated server
+
+#### SSH in from the terminal
+```
+ssh root@45.58.43.202
+```
+If you are supposed to have access you will know the password. 
+
+Navigate to `/home/godot` to find all the files.
+
+#### To upload a file to the server
+```
+scp file_name root@45.58.43.202:/home/godot
+
+eg: scp world.pck root@45.58.43.202:/home/godot
 ```
