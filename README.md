@@ -36,6 +36,12 @@ Use the same as you would on windows except use `docker-compose` instead of `doc
 
 ```sudo apt-get remove docker docker-engine docker.io containerd runc```
 
+#### Before all
+```
+sudo apt-get update
+sudo apt upgrade
+```
+
 #### Set up the Repo
 
 ```
@@ -92,6 +98,45 @@ eg: sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=5:18.09.1~3-0~
 sudo docker -version
 ```
 
+## Setting up npm / node 
+
+#### Make sure we have curl
+```
+sudo apt install -y curl
+```
+
+#### Node - Tested working version v16.13.0
+```
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+```
+```
+sudo apt install -y nodejs
+```
+#### Check Node version
+```
+node -v
+
+v16.13.0
+
+```
+
+#### NPM - Testing working version 8.1.4
+
+```
+sudo apt-get install npm
+```
+
+##### Upgrade to 8.1.4
+```
+npm install -g npm@8.1.4
+```
+```
+npm -v
+
+8.1.4
+```
+
+
 ## To log in to the testing dedicated server
 
 #### SSH in from the terminal
@@ -107,10 +152,5 @@ Navigate to `/home/godot` to find all the files.
 scp file_name root@45.58.43.202:/home/godot
 
 eg: scp world.pck root@45.58.43.202:/home/godot
-```
-
-## Setting up npm / node 
-```
-sudo apt install nodejs npm 
 ```
 
