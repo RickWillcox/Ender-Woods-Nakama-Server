@@ -1,12 +1,6 @@
 # Ender-Woods-Nakama-Server
 This is a reimplementation of the Auth server using nakama
 
-## Install latest verion of docker compose
-Linux - 
-```
-sudo curl -L "https://github.com/docker/compose/releases/download/`curl -fsSLI -o /dev/null -w %{url_effective} https://github.com/docker/compose/releases/latest | sed 's#.*tag/##g' && echo`/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
-```
-
 ## Windows - 
 
 #### How to start server
@@ -26,7 +20,13 @@ Most likely typescript didn't compile correctly
 
 ## Linux 
 
-Same as above except use `docker-compose` instead of `docker compose`
+## Install latest verion of docker compose
+
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/`curl -fsSLI -o /dev/null -w %{url_effective} https://github.com/docker/compose/releases/latest | sed 's#.*tag/##g' && echo`/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
+```
+
+Use the same as you would on windows except use `docker-compose` instead of `docker compose`
 
 ----------------------------------------------------------------------------
 
