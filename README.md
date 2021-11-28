@@ -1,26 +1,14 @@
 # Ender-Woods-Nakama-Server
 This is a reimplementation of the Auth server using nakama
 
-## Windows - 
-
-#### How to start server
-`docker compose up`
-#### How to contribute
- - Suggest to use VScode for code editing
- - This requires npm
-#### How to test your changes
- - `docker compose down`
- - `docker compose build` // this rebuilds the typescript and updates the javascript module for nakama
- - `docker compose up`
- - Either use the test app or open nakama console at `localhost:7351`. it uses default credentials `admin:password`.
- You can execute rpcs through "Explore Api"
-#### Troubleshooting
-##### 1. My changes are not updated, new rpcs arent visible
-Most likely typescript didn't compile correctly
-
-## Linux 
-
-## Install latest verion of docker compose
+## Setup environment
+### Windows
+#### Install Docker
+ - https://www.docker.com/products/docker-desktop
+#### Install node
+ - https://nodejs.org/en/download/
+### Linux
+#### Install latest verion of docker compose
 
 ```
 sudo curl -L "https://github.com/docker/compose/releases/download/`curl -fsSLI -o /dev/null -w %{url_effective} https://github.com/docker/compose/releases/latest | sed 's#.*tag/##g' && echo`/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
@@ -30,19 +18,18 @@ Use the same as you would on windows except use `docker-compose` instead of `doc
 
 ----------------------------------------------------------------------------
 
-## If setting up Docker for the first time on a new linux machine 
-
-#### Remove any old versions
+#### Install docker
+  1. Remove any old versions
 
 ```sudo apt-get remove docker docker-engine docker.io containerd runc```
 
-#### Before all
+  2. Before all
 ```
 sudo apt-get update
 sudo apt upgrade
 ```
 
-#### Set up the Repo
+  3. Set up the Repo
 
 ```
  sudo apt-get update
@@ -54,13 +41,13 @@ sudo apt upgrade
     lsb-release
 ```
 
-#### Add Dockers official GPG Key:
+  4. Add Dockers official GPG Key:
 
 ```
  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 ```
 
-#### Get the stable repo
+  5. Get the stable repo
 
 ```
 echo \
@@ -68,7 +55,7 @@ echo \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
-#### Install Docker Engine
+  6. Install Docker Engine
 
 ```
 sudo apt-get update
@@ -77,68 +64,35 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 ```
 
-### To install a specific version of docker
+  7. (optional) To install a specific version of docker
 
-#### List the versions
+List the versions
 ```
 apt-cache madison docker-ce
 
 docker-ce | 5:18.09.1~3-0~ubuntu-xenial | https://download.docker.com/linux/ubuntu  xenial/stable amd64 Packages
 ```
 
-#### Install the specific version
+Install the specific version
 ```
 sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io
 
 eg: sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=5:18.09.1~3-0~ubuntu-xenial containerd.io
 ```
 
-#### Check Version
-```
-sudo docker -version
-```
+#### Install node/npm
 
-## Setting up npm / node 
-
-#### Make sure we have curl
-```
-sudo apt install -y curl
-```
-
-#### Node - Tested working version v16.13.0
 ```
 curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 ```
 ```
 sudo apt install -y nodejs
 ```
-#### Check Node version
-```
-node -v
-
-v16.13.0
-
-```
-
-#### NPM - Testing working version 8.1.4
-
-```
-sudo apt-get install npm
-```
-
-##### Upgrade to 8.1.4
-```
-npm install -g npm@8.1.4
-```
-```
-npm -v
-
-8.1.4
-```
 
 
-## To log in to the testing dedicated server
-
+## Starting the server
+`docker compose up` in the root repo directory
+### On dedicated server
 #### SSH in from the terminal
 ```
 ssh root@45.58.43.202
@@ -154,3 +108,61 @@ scp file_name root@45.58.43.202:/home/godot
 eg: scp world.pck root@45.58.43.202:/home/godot
 ```
 
+### How to contribute
+ - Suggest to use VScode for code editing
+ - run `npm install` before starting
+## How to test your changes
+ - `docker compose down`
+ - `docker compose build` // this rebuilds the typescript and updates the javascript module for nakama
+ - `docker compose up`
+ - Either use the test app or open nakama console at `localhost:7351`. it uses default credentials `admin:password`.
+ You can execute rpcs through "Explore Api"
+## Troubleshooting
+### 1. My changes are not updated, new rpcs arent visible
+Most likely typescript didn't compile correctly
+### 2. Something is not working
+Check if your docker/npm/node versions match
+
+```
+root@EnderWoods:~# npm version
+{
+  npm: '8.1.4',
+  node: '16.13.0',
+```
+
+```
+root@EnderWoods:~# docker version
+Client: Docker Engine - Community
+ Version:           20.10.11
+ API version:       1.41
+ Go version:        go1.16.9
+ Git commit:        dea9396
+ Built:             Thu Nov 18 00:37:06 2021
+ OS/Arch:           linux/amd64
+ Context:           default
+ Experimental:      true
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          20.10.11
+  API version:      1.41 (minimum version 1.12)
+  Go version:       go1.16.9
+  Git commit:       847da18
+  Built:            Thu Nov 18 00:35:15 2021
+  OS/Arch:          linux/amd64
+  Experimental:     false
+ containerd:
+  Version:          1.4.12
+  GitCommit:        7b11cfaabd73bb80907dd23182b9347b4245eb5d
+ runc:
+  Version:          1.0.2
+  GitCommit:        v1.0.2-0-g52b36a2
+ docker-init:
+  Version:          0.19.0
+  GitCommit:        de40ad0
+```
+
+```
+root@EnderWoods:~# docker-compose version
+Docker Compose version v2.1.1
+```
