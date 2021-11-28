@@ -12,6 +12,9 @@
         "typeRoots": [
             "./node_modules"
         ],
+        "types": [
+            "nakama-runtime"
+        ],
         "outFile": "./build/index.js",
         "strict": true,
         "esModuleInterop": true,
