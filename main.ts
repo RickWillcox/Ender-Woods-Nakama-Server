@@ -15,6 +15,7 @@ function InitModule(ctx : nkruntime.Context, logger: nkruntime.Logger, nk: nkrun
 
     // initialize user metadata
     initializer.registerAfterAuthenticateCustom(afterAuthenticateCustom);
+    initializer.registerAfterAuthenticateEmail(afterAuthenticateEmail);
 
     // Get a users gamedata
     initializer.registerRpc("get_gamedata", getGameData);

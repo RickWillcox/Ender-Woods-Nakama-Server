@@ -6,24 +6,30 @@ function checkAuth(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkrunti
 
 function updateGameData(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string) : string {
     logger.info(payload)
-    var metdata : {[key : string] : any} = nk.accountGetId(ctx.userId).user.metadata
     var input : {[key : string] : any} = JSON.parse(payload)
     var user_id = input.user_id
+    var metadata : {[key : string] : any} = nk.accountGetId(user_id).user.metadata
+    if (!metadata.gamedata)
+    {
+        metadata.gamedata = {}
+    }
+
     if (input.experience)
     {
-        metdata.gamedata.experience = input.experience
+        metadata.gamedata.experience = input.experience
     }
 
     if (input.current_health)
     {
-        metdata.gamedata.current_health = input.current_health
+        metadata.gamedata.current_health = input.current_health
     }
-    nk.accountUpdateId(user_id, null, null, null, null, null, null, metdata)
+    nk.accountUpdateId(user_id, null, null, null, null, null, null, metadata)
     return JSON.stringify({success : true})
 }
 
 function getGameData(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string) : string {
     logger.info(payload)
-    var metdata : {[key : string] : any} = nk.accountGetId(ctx.userId).user.metadata
-    return JSON.stringify(metdata.gamedata)
+    var input : {[key : string] : any} = JSON.parse(payload)
+    var metadata : {[key : string] : any} = nk.accountGetId(input.user_id).user.metadata
+    return JSON.stringify(metadata.gamedata)
 }
