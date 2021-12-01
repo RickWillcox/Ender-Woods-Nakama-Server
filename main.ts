@@ -12,4 +12,13 @@ function InitModule(ctx : nkruntime.Context, logger: nkruntime.Logger, nk: nkrun
 
     // Check auth
     initializer.registerRpc("check_auth", checkAuth);
+
+    // initialize user metadata
+    initializer.registerAfterAuthenticateCustom(afterAuthenticateCustom);
+    initializer.registerAfterAuthenticateEmail(afterAuthenticateEmail);
+
+    // Get a users gamedata
+    initializer.registerRpc("get_gamedata", getGameData);
+    // Set a users gamedata
+    initializer.registerRpc("update_gamedata", updateGameData);
 }
