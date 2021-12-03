@@ -1,6 +1,10 @@
 # Ender-Woods-Nakama-Server
 This is a reimplementation of the Auth server using nakama
 
+####
+Access GUI
+`localhost:7351`
+
 ## Setup environment
 ### Windows
 #### Install Docker
