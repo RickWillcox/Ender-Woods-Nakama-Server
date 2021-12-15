@@ -13,6 +13,7 @@ COPY inventory_rpcs.ts .
 COPY common.ts .
 COPY user_rpcs.ts .
 COPY hooks.ts .
+COPY quests.ts .
 RUN npx tsc
 
 FROM heroiclabs/nakama:3.4.0

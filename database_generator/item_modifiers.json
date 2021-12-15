@@ -1,0 +1,11 @@
+
+[
+  {
+	"collection": "item_database",
+	"key": "modifiers",
+	"permission_read": 2,
+	"permission_write": 0,
+	"user_id": "00000000-0000-0000-0000-000000000000",
+	"value": {"1":{"type":0,"modifiers":"{\"attack\":1}","display":"Sharp","item_category_restrictions":1},"2":{"type":0,"modifiers":"{\"attack\":-1}","display":"Blunt","item_category_restrictions":1},"3":{"type":1,"modifiers":"{\"wisdom\":1}","display":"of Wisdom","item_category_restrictions":0},"4":{"type":0,"modifiers":"{\"defense\":2}","display":"Reinforced","item_category_restrictions":2}}
+  }
+]

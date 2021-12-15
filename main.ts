@@ -10,6 +10,11 @@ function InitModule(ctx : nkruntime.Context, logger: nkruntime.Logger, nk: nkrun
     initializer.registerRpc("get_inventory", getInventory);
     initializer.registerRpc("set_inventory", setInventory);
 
+    // Quests
+    initializer.registerRpc("get_quests", getQuests);
+    initializer.registerRpc("get_user_quest_states", getUserQuestStates);
+    initializer.registerRpc("set_user_quest_states", setUserQuestStates);
+
     // Check auth
     initializer.registerRpc("check_auth", checkAuth);
 
