@@ -1,7 +1,7 @@
 
 [
   {
-	"collection": "item_database",
+	"collection": "json_database_files",
 	"key": "items",
 	"permission_read": 2,
 	"permission_write": 0,

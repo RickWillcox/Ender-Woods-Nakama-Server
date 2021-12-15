@@ -1,7 +1,7 @@
 
 [
 	{
-		"collection": "quest_database",
+		"collection": "json_database_files",
 		"key": "quests",
 		"permission_read": 2,
 		"permission_write": 0,

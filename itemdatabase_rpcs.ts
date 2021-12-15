@@ -1,5 +1,5 @@
-function getItems(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string) : string {
-    var items : {} = _getCollection(nk, "item_database", "items")
+function getItemsDatabase(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string) : string {
+    var items : {} = _getCollection(nk, "json_database_files", "items")
     if (Object.keys(items).length == 0)
     {
         return JSON.stringify({success : false, message: "Item database not initialized"})
@@ -7,8 +7,8 @@ function getItems(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntim
     return JSON.stringify({success: true, result: items})
 }
 
-function getRecipes(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string) : string {
-    var items : {} = _getCollection(nk, "item_database", "recipes")
+function GetCraftingRecipesDatabase(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string) : string {
+    var items : {} = _getCollection(nk, "json_database_files", "recipes")
     if (Object.keys(items).length == 0)
     {
         return JSON.stringify({success : false, message: "Item database not initialized"})
@@ -16,8 +16,8 @@ function getRecipes(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkrunt
     return JSON.stringify({success: true, result: items})
 }
 
-function getModifiers(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string) : string {
-    var items : {} = _getCollection(nk, "item_database", "modifiers")
+function getItemModifiersDatabase(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string) : string {
+    var items : {} = _getCollection(nk, "json_database_files", "modifiers")
     if (Object.keys(items).length == 0)
     {
         return JSON.stringify({success : false, message: "Item database not initialized"})

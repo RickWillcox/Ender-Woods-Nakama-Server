@@ -165,7 +165,7 @@ func generate_item_database():
 	for item in items:
 		(item as Item).save(json_writer)
 		
-	json_writer.save("item_database", "items", "items.json")
+	json_writer.save("json_database_files", "items", "items.json")
 
 func generate_recipe_database():
 	var recipes = []
@@ -179,7 +179,7 @@ func generate_recipe_database():
 	json_writer.clear()
 	for recipe in recipes:
 		(recipe as Recipe).save(json_writer)
-	json_writer.save("item_database", "recipes", "recipes.json")
+	json_writer.save("json_database_files", "recipes", "recipes.json")
 
 
 	
@@ -207,4 +207,4 @@ func generate_itemmodifier_database():
 	json_writer.clear()
 	for item_modifier in item_modifier_definitions:
 		ItemModifier.new(item_modifier[0], item_modifier[2], item_modifier[3], item_modifier[1], item_modifier[4]).save(json_writer)
-	json_writer.save("item_database", "modifiers", "item_modifiers.json")
+	json_writer.save("json_database_files", "modifiers", "item_modifiers.json")

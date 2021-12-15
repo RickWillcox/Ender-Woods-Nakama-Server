@@ -7,16 +7,14 @@ RUN npm install
 
 COPY tsconfig.json .
 COPY main.ts .
-COPY healthcheck.ts .
-COPY itemdatabase_rpcs.ts .
-COPY inventory_rpcs.ts .
 COPY common.ts .
-COPY user_rpcs.ts .
-COPY hooks.ts .
-COPY quests.ts .
+COPY player_rpcs.ts .
+COPY database_rpcs.ts .
+COPY server_rpcs.ts .
 RUN npx tsc
 
 FROM heroiclabs/nakama:3.4.0
 
 COPY --from=node-builder /backend/build/*.js /nakama/data/modules/build/
 COPY local.yml .
+
