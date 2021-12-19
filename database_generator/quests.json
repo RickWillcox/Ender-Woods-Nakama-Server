@@ -8,6 +8,7 @@
 		"user_id": "00000000-0000-0000-0000-000000000000",
 		"value": {
 		  "1": {
+			"status" : 0,
 			"requirements": {
 				"min_level" : 0,
 				"max_level" : 0,
@@ -18,7 +19,17 @@
 			"item_rewards" : [[23, 1], [24, 1]],
 			"other_rewards" : [["player_experience", 500] , [0]],
 			"unlocks_quest_ids" : [2],
-			"unlocks_new_skill" : [1]
+			"unlocks_new_skill" : [1],
+			"milestones" : {
+				"kill_enemies" : {
+					"slime" : 10
+				},
+				"collect_items" :{
+					"3" : {
+						"amount" : 5
+					} 
+				}
+			}
 		  }
 		}
 	  }
