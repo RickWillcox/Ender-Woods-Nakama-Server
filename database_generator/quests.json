@@ -8,29 +8,324 @@
 		"user_id": "00000000-0000-0000-0000-000000000000",
 		"value": {
 		  "1": {
-			"status" : 0,
+			"quest_name": "I hate wet feet",
+			"npc_begins": "fisherman_bob",
+			"npc_ends" : "beach_chief_sam",
 			"requirements": {
+				"repeatable" : false,
 				"min_level" : 0,
 				"max_level" : 0,
-				"previous_quests_completed" : [10, 11, 13]
+				"previous_quests_completed" : {
+
+				}
 			},
-			"quest_name": "I hate wet feet",
-			"items_given_at_beginning_of_quest": [22],
-			"item_rewards" : [[23, 1], [24, 1]],
-			"other_rewards" : [["player_experience", 500] , [0]],
-			"unlocks_quest_ids" : [2],
-			"unlocks_new_skill" : [1],
+			"items_given_at_beginning_of_quest": {
+				"REPLACE_bucket_of_fish_ITEM_ID" : {
+					"item_name" : "Bucket of Fish",
+					"quantity" : 1
+				}
+			},
+			"item_rewards" : {
+				"REPLACE_minor_health_potion_ITEM_ID" : {
+					"item_name" : "Minor Potion of Health",
+					"quantity" : 3
+				}
+			},
+			"items_taken_from_player_on_completion" :{
+				"REPLACE_bucket_of_fish_ITEM_ID" : {
+					"item_name" : "Bucket of Fish",
+					"quantity" : 1
+				}
+			},
+			"other_rewards" : {
+
+			},
 			"milestones" : {
-				"kill_enemies" : {
-					"slime" : 10
-				},
-				"collect_items" :{
-					"3" : {
-						"amount" : 5
-					} 
+
+			}
+		  },
+		  "2": {
+			"quest_name": "Crab soup",
+			"npc_begins": "beach_chief_sam",
+			"npc_ends" : "beach_chief_sam",
+			"requirements": {
+				"repeatable" : false,
+				"min_level" : 0,
+				"max_level" : 0,
+				"previous_quests_completed" : {
+					"1" : null
+				}
+			},
+			"items_given_at_beginning_of_quest": {
+				"6" : {
+					"item_name" : "Copper Sword",
+					"quantity" : 1
+				}
+			},
+			"item_rewards" : {
+				"REPLACE_SILVER_COINS_ITEM_ID" : {
+					"item_name" : "Silver Coin",
+					"quantity" : 10
+				}
+			},
+			"items_taken_from_player_on_completion" :{
+				"REPLACE_CRAB_GUTS_ITEM_ID" : {
+					"item_name" : "Crab Guts",
+					"quantity" : 10
+				}
+			},
+			"other_rewards" : {
+				"player_experience" : 100
+			},
+			"milestones" : {
+				
+			}
+		  },
+		  "3": {
+			"quest_name": "Where are those damn miners?",
+			"npc_begins": "beach_chief_sam",
+			"npc_ends" : "miner_greg",
+			"requirements": {
+				"repeatable" : false,
+				"min_level" : 0,
+				"max_level" : 0,
+				"previous_quests_completed" : {
+					"1" : null,
+					"2" : null
+				}
+			},
+			"items_given_at_beginning_of_quest": {
+				"REPLACE_NOTE_FOR_MINER_GREG" : {
+					"item_name" : "Note for Miner Greg",
+					"quantity" : 1
+				}
+			},
+			"item_rewards" : {
+
+			},
+			"items_taken_from_player_on_completion" :{
+				"REPLACE_NOTE_FOR_MINER_GREG" : {
+					"item_name" : "Note for Miner Greg",
+					"quantity" : 1
+				}
+			},
+			"other_rewards" : {
+				"player_experience" : 100
+			},
+			"milestones" : {
+				
+			}
+		  },
+		  "4": {
+			"quest_name": "Go hit some rocks kid!",
+			"npc_begins": "miner_greg",
+			"npc_ends" : "miner_greg",
+			"requirements": {
+				"repeatable" : false,
+				"min_level" : 0,
+				"max_level" : 0,
+				"previous_quests_completed" : {
+					"1" : null,
+					"2" : null,
+					"3" : null
+				}
+			},
+			"items_given_at_beginning_of_quest": {
+				"10" : {
+					"item_name" : "Copper Pickaxe",
+					"quantity" : 1
+				}
+			},
+			"item_rewards" : {
+				"5" : {
+					"item_name" : "Copper Boots",
+					"quantity" : 1
+				}
+			},
+			"items_taken_from_player_on_completion" :{
+				"100000" : {
+					"item_name" : "Copper Ore",
+					"quantity" : 10
+				}
+			},
+			"other_rewards" : {
+				"mining_experience" : 100
+			},
+			"milestones" : {
+				
+			}
+		  },
+		  "5": {
+			"quest_name": "These boots were made for walkin",
+			"npc_begins": "miner_greg",
+			"npc_ends" : "travelling_vendor_robby",
+			"requirements": {
+				"repeatable" : false,
+				"min_level" : 0,
+				"max_level" : 0,
+				"previous_quests_completed" : {
+					"1" : null,
+					"2" : null,
+					"3" : null,
+					"4" : null
+				}
+			},
+			"items_given_at_beginning_of_quest": {
+
+			},
+			"item_rewards" : {
+				"REPLACE_SILVER_COINS_ITEM_ID" : {
+					"item_name" : "Silver Coin",
+					"quantity" : 1
+				}
+			},
+			"items_taken_from_player_on_completion" :{
+
+			},
+			"other_rewards" : {
+				"player_experience" : 100
+			},
+			"milestones" : {
+				
+			}
+		  },
+		  "6": {
+			"quest_name": "Time to make something of myself…. I guess",
+			"npc_begins": "travelling_vendor_robby",
+			"npc_ends" : "recruiter_billy",
+			"requirements": {
+				"repeatable" : false,
+				"min_level" : 0,
+				"max_level" : 0,
+				"previous_quests_completed" : {
+					"1" : null,
+					"2" : null,
+					"3" : null,
+					"4" : null,
+					"5" : null
+				}
+			},
+			"items_given_at_beginning_of_quest": {
+				
+			},
+			"item_rewards" : {
+
+			},
+			"items_taken_from_player_on_completion" :{
+
+			},
+			"other_rewards" : {
+				"player_experience" : 100
+			},
+			"milestones" : {
+				
+			}
+		  },
+		  "7": {
+			"quest_name": "Deers gotta go",
+			"npc_begins": "ender_town_job_board",
+			"npc_ends" : "ender_town_job_board",
+			"requirements": {
+				"repeatable" : false,
+				"min_level" : 0,
+				"max_level" : 0,
+				"previous_quests_completed" : {
+					"1" : null,
+					"2" : null,
+					"3" : null,
+					"4" : null,
+					"5" : null,
+					"6" : null
+				}
+			},
+			"items_given_at_beginning_of_quest": {
+				
+			},
+			"item_rewards" : {
+				"REPLACE_SILVER_COINS_ITEM_ID" : {
+					"item_name" : "Silver Coin",
+					"quantity" : 5
+				}
+			},
+			"items_taken_from_player_on_completion" :{
+
+			},
+			"other_rewards" : {
+				"player_experience" : 200
+			},
+			"milestones" : {
+				"enemies_left_to_kill" : {
+					"deer" : 15
+				}
+			}
+		  },
+		  "1001": {
+			"quest_name": "Hunt some Boars",
+			"npc_begins": "ender_town_job_board",
+			"npc_ends" : "ender_town_job_board",
+			"requirements": {
+				"repeatable" : true,
+				"min_level" : 0,
+				"max_level" : 0,
+				"previous_quests_completed" : {
+					"7" : null
+				}
+			},
+			"items_given_at_beginning_of_quest": {
+				
+			},
+			"item_rewards" : {
+				"REPLACE_SILVER_COINS_ITEM_ID" : {
+					"item_name" : "Silver Coin",
+					"quantity" : 5
+				}
+			},
+			"items_taken_from_player_on_completion" :{
+
+			},
+			"other_rewards" : {
+				"player_experience" : 200
+			},
+			"milestones" : {
+				"enemies_left_to_kill" : {
+					"boar" : 15
+				}
+			}
+		  },
+		  "1002": {
+			"quest_name": "Squishy Slimes",
+			"npc_begins": "ender_town_job_board",
+			"npc_ends" : "ender_town_job_board",
+			"requirements": {
+				"repeatable" : true,
+				"min_level" : 0,
+				"max_level" : 0,
+				"previous_quests_completed" : {
+					"7" : null
+				}
+			},
+			"items_given_at_beginning_of_quest": {
+				
+			},
+			"item_rewards" : {
+				"REPLACE_SILVER_COINS_ITEM_ID" : {
+					"item_name" : "Silver Coin",
+					"quantity" : 10
+				}
+			},
+			"items_taken_from_player_on_completion" :{
+
+			},
+			"other_rewards" : {
+				"player_experience" : 200
+			},
+			"milestones" : {
+				"enemies_left_to_kill" : {
+					"slime" : 20
 				}
 			}
 		  }
+		  
 		}
 	  }
 ]
