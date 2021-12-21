@@ -183,8 +183,11 @@ Docker Compose version v2.1.1
 #### API for databases
 
 http://127.0.0.1:7350/v2/rpc/get_crafting_recipes_database?http_key=defaulthttpkey
+
 http://127.0.0.1:7350/v2/rpc/get_items_database?http_key=defaulthttpkey
+
 http://127.0.0.1:7350/v2/rpc/get_item_modifiers_database?http_key=defaulthttpkey
+
 http://127.0.0.1:7350/v2/rpc/get_quests_database?http_key=defaulthttpkey
 
 Will obviously remove thiw when it matters
