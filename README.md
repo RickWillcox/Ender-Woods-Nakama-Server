@@ -2,9 +2,20 @@
 This is a reimplementation of the Auth server using nakama
 
 ####
+Video Tutorial: 
+
+
+https://user-images.githubusercontent.com/53924507/146849715-61165276-e9c5-422f-97f7-5c98dba2eb9a.mp4
+
+
+
 Access GUI
 `localhost:7351`
 [localhost:7351](http://localhost:7351)
+
+
+
+
 
 ## Setup environment
 ### Windows
