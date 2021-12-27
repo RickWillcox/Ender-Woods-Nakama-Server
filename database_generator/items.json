@@ -7,12 +7,6 @@
 	"permission_write": 0,
 	"user_id": "00000000-0000-0000-0000-000000000000",
 	"value": {
-		"collection": "json_database_files",
-		"key": "items",
-		"permission_read": 2,
-		"permission_write": 0,
-		"user_id": "00000000-0000-0000-0000-000000000000",
-		"value": {
 		  "1": {
 			"item_name": "copper_helmet",
 			"item_category": 0,
@@ -410,5 +404,5 @@
 			"base_modifiers": {}
 		  }
 		}
-	  }}
+	  }
 ]
