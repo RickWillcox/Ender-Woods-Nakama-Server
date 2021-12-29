@@ -8,7 +8,7 @@
 	  "value": {
 		"1": {
 		  "quest_name": "I hate wet feet",
-		  "npc_begins": "fisherman_bob",
+		  "npc_starts": "fisherman_bob",
 		  "npc_ends": "beach_chief_sam",
 		  "requirements": {
 			"repeatable": false,
@@ -40,7 +40,7 @@
 		},
 		"2": {
 		  "quest_name": "Crab soup",
-		  "npc_begins": "beach_chief_sam",
+		  "npc_starts": "beach_chief_sam",
 		  "npc_ends": "beach_chief_sam",
 		  "requirements": {
 			"repeatable": false,
@@ -76,7 +76,7 @@
 		},
 		"3": {
 		  "quest_name": "Where are those damn miners?",
-		  "npc_begins": "beach_chief_sam",
+		  "npc_starts": "beach_chief_sam",
 		  "npc_ends": "miner_greg",
 		  "requirements": {
 			"repeatable": false,
@@ -108,7 +108,7 @@
 		},
 		"4": {
 		  "quest_name": "Go hit some rocks kid!",
-		  "npc_begins": "miner_greg",
+		  "npc_starts": "miner_greg",
 		  "npc_ends": "miner_greg",
 		  "requirements": {
 			"repeatable": false,
@@ -146,7 +146,7 @@
 		},
 		"5": {
 		  "quest_name": "These boots were made for walkin",
-		  "npc_begins": "miner_greg",
+		  "npc_starts": "miner_greg",
 		  "npc_ends": "travelling_vendor_robby",
 		  "requirements": {
 			"repeatable": false,
@@ -175,7 +175,7 @@
 		},
 		"6": {
 		  "quest_name": "Time to make something of myself…. I guess",
-		  "npc_begins": "travelling_vendor_robby",
+		  "npc_starts": "travelling_vendor_robby",
 		  "npc_ends": "recruiter_billy",
 		  "requirements": {
 			"repeatable": false,
@@ -200,7 +200,7 @@
 		},
 		"7": {
 		  "quest_name": "Deers gotta go",
-		  "npc_begins": "ender_town_job_board",
+		  "npc_starts": "ender_town_job_board",
 		  "npc_ends": "ender_town_job_board",
 		  "requirements": {
 			"repeatable": false,
@@ -235,7 +235,7 @@
 		},
 		"1001": {
 		  "quest_name": "Hunt some Boars",
-		  "npc_begins": "ender_town_job_board",
+		  "npc_starts": "ender_town_job_board",
 		  "npc_ends": "ender_town_job_board",
 		  "requirements": {
 			"repeatable": true,
@@ -265,7 +265,7 @@
 		},
 		"1002": {
 		  "quest_name": "Squishy Slimes",
-		  "npc_begins": "ender_town_job_board",
+		  "npc_starts": "ender_town_job_board",
 		  "npc_ends": "ender_town_job_board",
 		  "requirements": {
 			"repeatable": true,
@@ -295,7 +295,7 @@
 		},
 		"1003": {
 		  "quest_name": "Pig on a spit",
-		  "npc_begins": "ender_town_job_board",
+		  "npc_starts": "ender_town_job_board",
 		  "npc_ends": "ender_town_job_board",
 		  "requirements": {
 			"repeatable": true,
