@@ -1,4 +1,4 @@
-# Ender-Woods-Nakama-Server
+# Ender Woods Nakama Server
 This is a reimplementation of the Auth server using nakama
 
 #### Video Tutorial: 
